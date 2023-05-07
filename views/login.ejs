@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="http://127.0.0.1:4000/css/main.css" />
+    <title>Syslogic KPI System</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="logo-containter">
+          <a href="#">Syslogic</a>
+        </div>
+      </header>
+
+      <section class="login">
+        <div class="container">
+          <div class="left-col">
+            <div class="login-data">
+              <div class="login-header">
+                <img src="http://127.0.0.1:4000/img/logo.svg" alt="" />
+                <h1>Welcome to Syslogic</h1>
+                <p>Please enter your details.</p>
+              </div>
+
+              <form id="login-form" action="#">
+                <label class="data-label" for="email">Email</label>
+                <input
+                  id="login-email"
+                  placeholder="Email"
+                  class="data-input"
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+
+                <label class="data-label" for="password">Password</label>
+                <input
+                  id="login-password"
+                  placeholder="●●●●●●●●●●"
+                  class="data-input"
+                  type="password"
+                  name="password"
+                  autocomplete="password"
+                  required
+                />
+
+                <div class="additional-functions">
+                  <div>
+                    <input name="remember" type="checkbox" />
+                    <label for="remember">Remember for 30 days</label>
+                  </div>
+                  <a href="#">Forget Password</a>
+                </div>
+
+                <input class="signup-btn" type="submit" value="Sign In" />
+              </form>
+
+              <div class="login-page">
+                <p>
+                  Don't have an account?
+                  <a href="http://127.0.0.1:4000/signup">Sign Up</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="right-col">
+            <!-- <img src="#" alt="Login Page Image" /> -->
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="http://127.0.0.1:4000/js/login.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+  </body>
+</html>

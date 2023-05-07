@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <title>Syslogic KPI System</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="logo-containter">
+          <a href="#">Syslogic</a>
+        </div>
+      </header>
+
+      <section class="login">
+        <div class="container">
+          <div class="left-col">
+            <div class="login-data">
+              <div class="login-header">
+                <img src="./img/logo.svg" alt="" />
+                <h1>Welcome to Syslogic</h1>
+                <p>Please enter your details.</p>
+              </div>
+
+              <form id="signup-form" action="#">
+                <label class="data-label" for="fName">First Name</label>
+                <input
+                  id="fname"
+                  placeholder="First Name"
+                  class="data-input"
+                  type="text"
+                  name="fName"
+                  autocomplete="first-name"
+                  required
+                />
+
+                <label class="data-label" for="lName">Last Name</label>
+                <input
+                  id="lname"
+                  placeholder="Last Name"
+                  class="data-input"
+                  type="text"
+                  name="lName"
+                  autocomplete="last-name"
+                  required
+                />
+
+                <label class="data-label" for="email">Email</label>
+                <input
+                  id="email"
+                  placeholder="Email"
+                  class="data-input"
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+
+                <label class="data-label" for="password">Password</label>
+                <input
+                  id="password"
+                  placeholder="●●●●●●●●●●"
+                  class="data-input"
+                  type="password"
+                  name="password"
+                  autocomplete="password"
+                  required
+                />
+
+                <label class="data-label" for="password-confirm"
+                  >Password Confirm</label
+                >
+                <input
+                  id="password-confirm"
+                  placeholder="●●●●●●●●●●"
+                  class="data-input"
+                  type="password"
+                  name="password-confirm"
+                  autocomplete="password-confirm"
+                  required
+                />
+
+                <input class="signup-btn" type="submit" value="Sign Up" />
+              </form>
+
+              <div class="login-page">
+                <p>
+                  Do you have an account?
+                  <a href="http://127.0.0.1:4000/login">Log In</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="right-col">
+            <!-- <img src="#" alt="Login Page Image" /> -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="successSignUpModal hidden">
+      <div class="container">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      </div>
+      <div class="info">
+        <h4>Great!</h4>
+        <p>Your account has been created successfully.</p>
+      </div>
+    </div>
+
+    <div class="errorSignUpModal hidden">
+      <div class="container">
+        <h1>Error! Please Check your Details again...!</h1>
+      </div>
+    </div>
+
+    <div class="overlay hidden"></div>
+
+    <script src="http://127.0.0.1:4000/js/signup.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+  </body>
+</html>

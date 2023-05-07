@@ -1,36 +1,6 @@
-const openBtn = document.querySelector(".mobile-open-btn");
-const closeBtn = document.querySelector(".mobile-close-btn");
-const navBar = document.querySelector("nav");
-
-const modalCloseBtn = document.querySelector(".modal-close-btn");
-const addNewRecordBtn = document.querySelector(".add-new-record");
-const addRecordModalWindow = document.querySelector(".add-record");
-const overlay = document.querySelector(".overlay");
-
-openBtn.addEventListener("click", () => {
-  navBar.classList.add("open");
-});
-
-closeBtn.addEventListener("click", () => {
-  navBar.classList.remove("open");
-});
-
-///////////////////////////////////////////
-
-addNewRecordBtn.addEventListener("click", () => {
-  addRecordModalWindow.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-});
-
-modalCloseBtn.addEventListener("click", () => {
-  addRecordModalWindow.classList.add("hidden");
-  overlay.classList.add("hidden");
-});
-
-// ====================================================================================================================
-
 const addNewCompany = document.querySelector("#add-new-company");
 const deleteRecordBtn = document.querySelector(".delete-record");
+const logOutBtn = document.querySelector(".logOutBtn");
 
 const addCompany = async (
   compnayName,
@@ -105,4 +75,20 @@ deleteRecordBtn.addEventListener("click", (event) => {
     deleteCompany(selectedRowIds);
   }
   //
+});
+
+logOutBtn.addEventListener("click", async (event) => {
+  console.log("A");
+  try {
+    const response = await axios({
+      method: "GET",
+      url: "http://127.0.0.1:4000/api/v1/users/logout",
+    });
+
+    if (response.data.status === "success") {
+      location.reload(true);
+    }
+  } catch (error) {
+    console.log("Error in Logout Process...!");
+  }
 });

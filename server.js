@@ -23,3 +23,5 @@ const PORT = 4000;
 app.listen(PORT, (error) => {
   console.log(`App Started in ${PORT}`);
 });
+
+module.exports = mongoose;

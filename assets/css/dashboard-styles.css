@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -10,6 +11,173 @@
 
 .wrapper {
   margin: 0 0.8em;
+}
+.wrapper .site-actions {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+.wrapper .site-actions .buttons {
+  display: flex;
+  gap: 2em;
+}
+.wrapper .site-actions .buttons input {
+  display: unset;
+  font-family: "Varela Round";
+  font-weight: bold;
+  background-color: #1e1e1e;
+  border: none;
+  border-radius: 0.6em;
+  padding: 1em 3em;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.wrapper .member-table {
+  /* required css to make rounded table (below) */
+}
+.wrapper .member-table .companyName {
+  text-decoration: none;
+  font-weight: bold;
+}
+.wrapper .member-table .companyName:visited {
+  color: blue;
+}
+.wrapper .member-table table {
+  margin-top: 2em;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+.wrapper .member-table th,
+.wrapper .member-table td {
+  padding: 10px;
+  border: 1px solid #d6d6d6;
+}
+.wrapper .member-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.wrapper .member-table tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+.wrapper .member-table tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+.wrapper .member-table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+.wrapper .member-table tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+.wrapper .add-kpi-records .main {
+  /* invited list */
+  /* 
+  responded 
+  ---------
+  */
+}
+.wrapper .add-kpi-records .main p {
+  margin: 0 0 20px;
+}
+.wrapper .add-kpi-records .main ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.wrapper .add-kpi-records .main button:focus,
+.wrapper .add-kpi-records .main input[type=text]:focus {
+  outline: none;
+}
+.wrapper .add-kpi-records .main #inviteForm {
+  position: relative;
+  margin: 0 0 20px;
+}
+.wrapper .add-kpi-records .main #inviteForm input {
+  border: 1px solid #eee;
+  padding: 10px 100px 10px 10px;
+  width: 100%;
+  height: 50px;
+  font: 16px/1.4 "Mulish", sans-serif;
+  color: #333;
+}
+.wrapper .add-kpi-records .main #inviteForm button {
+  padding: 0 1em;
+  font: 16px/1.4 "Mulish", sans-serif;
+  background: #1e1e1e;
+  color: #fff;
+  border-radius: 0;
+  border: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  height: 40px;
+  transition: opacity 0.3s linear;
+}
+.wrapper .add-kpi-records .main #inviteForm button:hover {
+  opacity: 0.7;
+}
+.wrapper .add-kpi-records .main #invitedList li {
+  padding: 20px;
+  margin: 0 0 10px;
+  border-radius: 0.2em;
+  border: 1px solid #eee;
+}
+.wrapper .add-kpi-records .main #invitedList li span,
+.wrapper .add-kpi-records .main #invitedList li input[type=text] {
+  font: 20px/1.4 "Mulish", sans-serif;
+  margin: 0 0 5px;
+  display: block;
+}
+.wrapper .add-kpi-records .main #invitedList li input[type=text] {
+  border: 1px solid #eee;
+  padding: 10px 100px 10px 10px;
+  width: 100%;
+  height: 50px;
+  color: #333;
+}
+.wrapper .add-kpi-records .main #invitedList li label {
+  font-size: 14px;
+  display: block;
+  margin: 0 0 10px;
+  color: rgba(112, 112, 112, 0.55);
+}
+.wrapper .add-kpi-records .main #invitedList li label input[type=checkbox] {
+  margin: 0 0 0 5px;
+}
+.wrapper .add-kpi-records .main #invitedList li button {
+  font-size: 14px;
+  margin: 0 5px 0 0;
+  border-radius: 3px;
+  padding: 5px 10px;
+  color: white;
+  background: #1e1e1e;
+  border: 0;
+  cursor: pointer;
+  transition: opacity 0.3s linear;
+}
+.wrapper .add-kpi-records .main #invitedList li button:last-child {
+  background: #1e1e1e;
+}
+.wrapper .add-kpi-records .main #invitedList li button:hover {
+  opacity: 0.7;
+}
+.wrapper .add-kpi-records .main #invitedList li.responded {
+  transition: 0.4s;
+  border-color: #70b3ff;
+}
+.wrapper .add-kpi-records .main #invitedList li.responded label,
+.wrapper .add-kpi-records .main #invitedList li.responded span {
+  transition: 0.4s;
+  color: #70b3ff;
+}
+.wrapper .add-kpi-records .kpi-container {
+  padding: 0.5em 0;
+}
+.wrapper .add-kpi-records .kpi-container input {
+  width: 100%;
 }
 
 body {
@@ -21,20 +189,20 @@ header {
   background-color: var(--main-color);
   display: flex;
   justify-content: space-between;
-  padding: 1em 2em;
+  padding: 0.2em 2em;
 }
 header .site-logo {
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.2em;
 }
 header .site-logo img {
-  width: 2em;
+  width: 1.5em;
 }
 header .site-logo a {
   text-decoration: none;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: black;
 }
 header .mobile-open-btn {
@@ -59,7 +227,7 @@ header nav {
 }
 header nav ul {
   margin-top: 5em;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 2em;
   list-style: none;
   text-align: right;
@@ -84,7 +252,6 @@ header nav .mobile-close-btn {
 
 main h1 {
   margin: 1em 0em;
-  text-align: center;
 }
 main input {
   display: none;
@@ -131,8 +298,13 @@ section.members {
 }
 
 @media only screen and (min-width: 1000px) {
+  #page-container {
+    position: relative;
+    min-height: 100vh;
+  }
   header {
     position: fixed;
+    z-index: 10;
     top: 0;
     width: 100%;
     box-sizing: border-box;
@@ -157,10 +329,11 @@ section.members {
   header nav ul {
     float: left;
     display: flex;
+    margin: 0;
     align-items: center;
     gap: 2em;
     margin-top: unset;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 2em;
     list-style: none;
     text-align: right;
@@ -188,18 +361,13 @@ section.members {
   header nav .nav-items {
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
   header .nav-settings {
     display: flex;
     gap: 20px;
     align-items: center;
-  }
-  header .nav-settings img {
-    width: 3em;
-    padding: 1px;
-    border: 2px solid #1e1e1e;
-    border-radius: 50%;
   }
   header .nav-settings svg {
     width: 1.7em;
@@ -209,14 +377,28 @@ section.members {
     transform: rotate(360deg);
     transition: transform 0.8s;
   }
+  header .nav-settings .logOutBtn {
+    text-decoration: none;
+    color: white;
+    background-color: #1e1e1e;
+    padding: 0.4em;
+    border-radius: 8px;
+    opacity: 1;
+    transition: opacity 0.4s;
+  }
+  header .nav-settings .logOutBtn:hover {
+    opacity: 0.8;
+  }
   .wrapper {
     max-width: 1600px;
     padding: 0 2em;
-    margin: 6em auto 0 auto;
+    margin: 8em auto 0 auto;
   }
   .wrapper .site-actions {
+    flex-direction: unset;
     display: flex;
     justify-content: space-between;
+    gap: unset;
   }
   .wrapper .site-actions .buttons {
     display: flex;
@@ -235,25 +417,6 @@ section.members {
     color: white;
     font-size: 0.8rem;
     cursor: pointer;
-  }
-  .wrapper section.admin-site-stats {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 2em;
-  }
-  .wrapper section.admin-site-stats .stat-box {
-    width: 30em;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    border: 1px solid #d6d6d6;
-    padding: 1em;
-    border-radius: 1em;
-  }
-  .wrapper section.admin-site-stats .count {
-    font-weight: bold;
-    font-size: 1.5rem;
   }
   .wrapper section.user-site-stats {
     display: flex;
@@ -302,13 +465,121 @@ section.members {
   .wrapper .member-table tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
   }
+  .wrapper .add-kpi-records .main {
+    /* invited list */
+    /* 
+    responded 
+    ---------
+    */
+  }
+  .wrapper .add-kpi-records .main p {
+    margin: 0 0 20px;
+  }
+  .wrapper .add-kpi-records .main ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .wrapper .add-kpi-records .main button:focus,
+  .wrapper .add-kpi-records .main input[type=text]:focus {
+    outline: none;
+  }
+  .wrapper .add-kpi-records .main #inviteForm {
+    position: relative;
+    margin: 0 0 20px;
+  }
+  .wrapper .add-kpi-records .main #inviteForm input {
+    border: 1px solid #eee;
+    padding: 10px 100px 10px 10px;
+    width: 100%;
+    height: 50px;
+    font: 16px/1.4 "Mulish", sans-serif;
+    color: #333;
+  }
+  .wrapper .add-kpi-records .main #inviteForm button {
+    padding: 0 1em;
+    font: 16px/1.4 "Mulish", sans-serif;
+    background: #1e1e1e;
+    color: #fff;
+    border-radius: 0;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 40px;
+    transition: opacity 0.3s linear;
+  }
+  .wrapper .add-kpi-records .main #inviteForm button:hover {
+    opacity: 0.7;
+  }
+  .wrapper .add-kpi-records .main #invitedList li {
+    padding: 20px;
+    margin: 0 0 10px;
+    border-radius: 0.2em;
+    border: 1px solid #eee;
+  }
+  .wrapper .add-kpi-records .main #invitedList li span,
+  .wrapper .add-kpi-records .main #invitedList li input[type=text] {
+    font: 20px/1.4 "Mulish", sans-serif;
+    margin: 0 0 5px;
+    display: block;
+  }
+  .wrapper .add-kpi-records .main #invitedList li input[type=text] {
+    border: 1px solid #eee;
+    padding: 10px 100px 10px 10px;
+    width: 100%;
+    height: 50px;
+    color: #333;
+  }
+  .wrapper .add-kpi-records .main #invitedList li label {
+    font-size: 14px;
+    display: block;
+    margin: 0 0 10px;
+    color: rgba(112, 112, 112, 0.55);
+  }
+  .wrapper .add-kpi-records .main #invitedList li label input[type=checkbox] {
+    margin: 0 0 0 5px;
+  }
+  .wrapper .add-kpi-records .main #invitedList li button {
+    font-size: 14px;
+    margin: 0 5px 0 0;
+    border-radius: 3px;
+    padding: 5px 10px;
+    color: white;
+    background: #1e1e1e;
+    border: 0;
+    cursor: pointer;
+    transition: opacity 0.3s linear;
+  }
+  .wrapper .add-kpi-records .main #invitedList li button:last-child {
+    background: #1e1e1e;
+  }
+  .wrapper .add-kpi-records .main #invitedList li button:hover {
+    opacity: 0.7;
+  }
+  .wrapper .add-kpi-records .main #invitedList li.responded {
+    transition: 0.4s;
+    border-color: #70b3ff;
+  }
+  .wrapper .add-kpi-records .main #invitedList li.responded label,
+  .wrapper .add-kpi-records .main #invitedList li.responded span {
+    transition: 0.4s;
+    color: #70b3ff;
+  }
+  .wrapper .add-kpi-records .kpi-container {
+    padding: 0.5em 0;
+  }
+  .wrapper .add-kpi-records .kpi-container input {
+    width: 100%;
+  }
 }
 .record-modal-window {
   position: fixed;
   animation: fadeIn 1s;
-  top: 8em;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 99;
 }
 .record-modal-window .container {
@@ -324,6 +595,7 @@ section.members {
 }
 .record-modal-window .container h1 {
   font-family: "Poppins";
+  font-size: 3rem;
 }
 .record-modal-window .container .modal-close-btn {
   position: absolute;
@@ -424,10 +696,12 @@ section.members {
 footer {
   display: flex;
   justify-content: center;
-  margin-top: 6em;
   background-color: #1e1e1e;
   color: white;
-  padding: 2em;
+  padding: 2em 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 header nav ul li:hover::before {

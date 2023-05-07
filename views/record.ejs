@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="http://127.0.0.1:4000/css/dashboard-styles.css"
+    />
+
+    <title>Dashboard - Syslogic KPI System</title>
+  </head>
+  <body>
+    <header>
+      <%- include('includes/siteLogo') %> <%- include('includes/navigationBar')
+      %>
+    </header>
+    <div id="page-container">
+      <div class="wrapper">
+        <main>
+          <h1>
+            Add KPI Records for : <%= companyDetails.name[0].toUpperCase() +
+            companyDetails.name.substring(1) %>
+          </h1>
+        </main>
+
+        <input hidden type="text" value="<%= userDetails._id%>" id="userId" />
+        <input
+          hidden
+          type="text"
+          value="<%= companyDetails._id%>"
+          id="companyId"
+        />
+
+        <section class="members">
+          <div class="member-table"></div>
+        </section>
+
+        <section class="add-kpi-records">
+          <div class="main">
+            <form id="inviteForm">
+              <input
+                id="kpiDataInput"
+                type="text"
+                name="name"
+                placeholder="Enter KPI Data"
+              />
+              <button type="submit" name="submit" value="submit">Submit</button>
+            </form>
+
+            <ul id="invitedList">
+              <% for (let i = 0; i < kpiRecords.length; i++) {%>
+
+              <li>
+                <span><%= kpiRecords[i].kpiData %></span>
+
+                <div class="kpi-container">
+                  <input
+                    type="range"
+                    class="slider"
+                    min="0"
+                    max="100"
+                    step="20"
+                    value="<%= kpiRecords[i].percentage %>"
+                    required
+                    disabled
+                  />
+                </div>
+                <button>Edit</button>
+                <button>Remove</button>
+                <input
+                  value="<%= kpiRecords[i]._id%>"
+                  type="text"
+                  style="display: none"
+                  id="kpiRecordId"
+                />
+              </li>
+
+              <% } %>
+            </ul>
+          </div>
+        </section>
+      </div>
+      <!-- <footer>
+        <p>Syslogic KPI System</p>
+      </footer> -->
+    </div>
+
+    <script src="http://127.0.0.1:4000/js/record.js"></script>
+    <script src="http://127.0.0.1:4000/js/logout.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+  </body>
+</html>
