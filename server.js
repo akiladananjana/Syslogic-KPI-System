@@ -5,7 +5,7 @@ dotenv.config({ path: "./env.config" });
 
 const app = require("./app");
 
-const DbConnectionString = process.env.MONGODB_LOCAL;
+const DbConnectionString = process.env.MONGODB_REMOTE;
 
 console.log(DbConnectionString);
 

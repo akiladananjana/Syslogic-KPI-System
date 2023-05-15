@@ -1,5 +1,9 @@
 // ====================================================================
 
+window.addEventListener("load", () => {
+  const spinnerContainer = document.querySelector(".preloaderContainer");
+  spinnerContainer.classList.add("spinnerHide");
+});
 // ====================================================================
 
 const inviteForm = document.querySelector("#inviteForm");
@@ -9,7 +13,7 @@ const invitedList = document.querySelector("#invitedList");
 const userId = document.querySelector("#userId").value;
 const companyId = document.querySelector("#companyId").value;
 
-const addLiItem = () => {
+const addLiItem = (recordId) => {
   // create li element
   const listItem = document.createElement("li");
 
@@ -30,6 +34,21 @@ const addLiItem = () => {
   slider.value = 0;
   slider.required = true;
   slider.disabled = true;
+  slider.setAttribute("step", 20);
+
+  // create a hidden input element
+  const hiddenInput = document.createElement("input");
+  hiddenInput.type = "text";
+  hiddenInput.style.display = "none";
+  hiddenInput.id = "kpiRecordId";
+  hiddenInput.setAttribute("value", recordId);
+
+  // add textare element
+  const textarea = document.createElement("textarea");
+  textarea.setAttribute("name", "#");
+  textarea.setAttribute("id", "#");
+  textarea.setAttribute("placeholder", "Enter Remarks");
+  textarea.disabled = true;
 
   // create edit button element
   const editButton = document.createElement("button");
@@ -44,8 +63,10 @@ const addLiItem = () => {
 
   listItem.appendChild(nameSpan);
   listItem.appendChild(kpiContainer);
+  listItem.appendChild(textarea);
   listItem.appendChild(editButton);
   listItem.appendChild(removeButton);
+  listItem.appendChild(hiddenInput);
 
   return listItem;
 };
@@ -65,16 +86,17 @@ const addRecord = async (kpiData, percentage, companyId, userId) => {
     },
   });
 
-  if (response.data.status === "Success") {
-    console.log("success");
-    location.assign(`/record/${companyId}`);
+  if (response.data.status === "success") {
+    // location.assign(`/record/${companyId}`);
+    const li = addLiItem(response.data.recordId);
+    invitedList.appendChild(li);
   }
 };
 
 // =====================================================================
 
 // Delete Record API Call
-const deleteRecord = async (kpiRecordId) => {
+const deleteRecord = async (kpiRecordId, li) => {
   const response = await axios({
     method: "DELETE",
     url: "http://127.0.0.1:4000/api/v1/record/delete/",
@@ -84,8 +106,8 @@ const deleteRecord = async (kpiRecordId) => {
   });
 
   if (response.data.status === "Success") {
-    console.log("success");
-    location.assign(`/record/${companyId}`);
+    invitedList.removeChild(li);
+    // location.assign(`/record/${companyId}`);
   }
 };
 
@@ -114,9 +136,6 @@ inviteForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (kpiDataInput.value != "") {
-    // const li = addLiItem();
-    // invitedList.appendChild(li);
-
     const percentage = 0;
     await addRecord(kpiDataInput.value, percentage, companyId, userId);
     kpiDataInput.value = "";
@@ -133,9 +152,10 @@ invitedList.addEventListener("click", (event) => {
     if (button.textContent == "Remove") {
       // invitedList.removeChild(li);
       const kpiRecordId = li.lastElementChild.value;
-      deleteRecord(kpiRecordId);
+      deleteRecord(kpiRecordId, li);
     } else if (button.textContent == "Edit") {
-      li.childNodes[3].firstElementChild.disabled = false;
+      li.children[1].firstElementChild.disabled = false;
+      li.style.border = "2px solid #ffd831";
       const span = li.firstElementChild;
       const input = document.createElement("input");
       input.type = "text";
@@ -144,20 +164,44 @@ invitedList.addEventListener("click", (event) => {
       li.removeChild(span);
       button.textContent = "Save";
     } else if (button.textContent == "Save") {
+      li.style.border = "1px solid #eee";
       const input = li.firstElementChild;
       const span = document.createElement("span");
       span.textContent = input.value;
       li.insertBefore(span, input);
       li.removeChild(input);
-      li.childNodes[3].firstElementChild.disabled = true;
+      li.children[1].firstElementChild.disabled = true;
 
-      const percentage = li.childNodes[3].firstElementChild.value;
+      const percentage = li.children[1].firstElementChild.value;
       const kpiData = input.value;
-      console.log(percentage, kpiData);
       const kpiRecordId = li.lastElementChild.value;
       updateRecord(kpiRecordId, percentage, kpiData);
 
       button.textContent = "Edit";
     }
   }
+});
+
+// =====================================================================
+
+const fileUploadForm = document.querySelector(".kpiFileUploadForm");
+
+fileUploadForm.addEventListener("change", function (event) {
+  const kpiId = fileUploadForm.parentElement.lastElementChild.value;
+
+  var file = event.target.files[0];
+  var formData = new FormData();
+  formData.append("kpi-record-file", file);
+  axios
+    .post(`http://127.0.0.1:4000/api/v1/record/upload/${kpiId}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });

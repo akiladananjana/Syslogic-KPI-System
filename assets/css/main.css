@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: "Varela Round";
+  font-family: "Poppins";
   color: #3b4e4c;
 }
 
@@ -41,7 +41,7 @@ header a {
 }
 .container .left-col h1,
 .container .left-col p {
-  font-family: "Varela Round";
+  font-family: "Poppins";
   margin-top: 0.8em;
 }
 .container .left-col h1 {
@@ -60,12 +60,12 @@ form {
   width: 100%;
 }
 form input::-moz-placeholder {
-  font-family: "Varela Round";
+  font-family: "Poppins";
   font-weight: bold;
   opacity: 0.6;
 }
 form input::placeholder {
-  font-family: "Varela Round";
+  font-family: "Poppins";
   font-weight: bold;
   opacity: 0.6;
 }

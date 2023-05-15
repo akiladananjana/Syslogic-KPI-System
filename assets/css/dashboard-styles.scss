@@ -27,7 +27,7 @@
       input {
         display: unset;
 
-        font-family: "Varela Round";
+        font-family: "Poppins";
         font-weight: bold;
         background-color: #1e1e1e;
         border: none;
@@ -109,6 +109,10 @@
         height: 50px;
         font: 16px/1.4 "Mulish", sans-serif;
         color: #333;
+
+        &:focus {
+          border: 2px solid #ffd831;
+        }
       }
 
       #inviteForm button {
@@ -136,6 +140,7 @@
         margin: 0 0 10px;
         border-radius: 0.2em;
         border: 1px solid #eee;
+        background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
       }
 
       #invitedList li span,
@@ -143,6 +148,19 @@
         font: 20px/1.4 "Mulish", sans-serif;
         margin: 0 0 5px;
         display: block;
+      }
+
+      #invitedList textarea {
+        display: block;
+        width: 100%;
+        margin-bottom: 1em;
+        resize: none;
+        font-family: "Poppins";
+      }
+
+      #invitedList textarea::placeholder {
+        font-family: "Poppins";
+        padding: 5px;
       }
 
       #invitedList li input[type="text"] {
@@ -184,6 +202,59 @@
         opacity: 0.7;
       }
 
+      #invitedList .kpiFileUploadForm {
+        margin-bottom: 1em;
+      }
+
+      #invitedList p {
+        margin: 0;
+      }
+
+      #invitedList .uploadedDocuments {
+        ul {
+          margin-bottom: 1em;
+        }
+        li {
+          display: flex;
+          gap: 0.8em;
+          align-items: center;
+          padding: unset;
+          margin: unset;
+          border: unset;
+          border-radius: unset;
+          border: 1px solid unset;
+          background-image: unset;
+        }
+        svg {
+          width: 1.2em;
+          color: red;
+        }
+      }
+
+      #upload_File_Input {
+        width: 100%;
+        max-width: 100%;
+        color: #444;
+        padding: 5px;
+        // border-radius: 10px;
+        border: 1px solid #eef;
+      }
+
+      #upload_File_Input::file-selector-button {
+        margin-right: 20px;
+        border: none;
+        background: #1e1e1e;
+        padding: 10px 20px;
+        // border-radius: 10px;
+        color: white;
+        font-family: "Poppins";
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+      }
+
+      #upload_File_Input::file-selector-button:hover {
+        background: #3b3b3b;
+      }
       /* 
 responded 
 ---------
@@ -211,7 +282,7 @@ responded
 
 body {
   background-color: var(--background-color);
-  font-family: "Varela Round";
+  font-family: "Poppins";
 }
 
 header {
@@ -330,7 +401,7 @@ section.user-site-stats {
     gap: 0.5em;
     border: 1px solid #d6d6d6;
     padding: 1em;
-    border-radius: 1em;
+
     // background: linear-gradient(90deg, #232526, #414345);
   }
 
@@ -347,7 +418,6 @@ section.members {
 @media only screen and (min-width: 1000px) {
   #page-container {
     position: relative;
-    min-height: 100vh;
   }
   header {
     position: fixed;
@@ -467,7 +537,7 @@ section.members {
         input {
           display: unset;
 
-          font-family: "Varela Round";
+          font-family: "Poppins";
           font-weight: bold;
           background-color: #1e1e1e;
           border: none;
@@ -493,7 +563,7 @@ section.members {
         gap: 0.5em;
         border: 1px solid #d6d6d6;
         padding: 1em;
-        border-radius: 1em;
+
         // background: linear-gradient(90deg, #232526, #414345);
       }
 
@@ -585,11 +655,20 @@ section.members {
         }
 
         /* invited list */
+        #invitedList {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(2, auto);
+          grid-gap: 1em;
+        }
+
         #invitedList li {
           padding: 20px;
           margin: 0 0 10px;
-          border-radius: 0.2em;
+          border-radius: 0.5em;
           border: 1px solid #eee;
+          width: 100%;
+          background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
         }
 
         #invitedList li span,
@@ -597,6 +676,19 @@ section.members {
           font: 20px/1.4 "Mulish", sans-serif;
           margin: 0 0 5px;
           display: block;
+        }
+
+        #invitedList textarea {
+          display: block;
+          width: 100%;
+          margin-bottom: 1em;
+          resize: none;
+          font-family: "Poppins";
+        }
+
+        #invitedList textarea::placeholder {
+          font-family: "Poppins";
+          padding: 5px;
         }
 
         #invitedList li input[type="text"] {
@@ -718,7 +810,7 @@ responded
         margin-bottom: 0.4em;
       }
       .data-input {
-        font-family: "Varela Round";
+        font-family: "Poppins";
         font-size: 1.2rem;
         outline: none;
         display: block;
@@ -821,6 +913,39 @@ header nav ul li:hover::before {
   }
   to {
     opacity: 0;
+  }
+}
+
+.spinnerHide {
+  display: none;
+}
+
+.preloaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 999;
+  .preloader {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translateXY(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid #333;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
   }
 }
 

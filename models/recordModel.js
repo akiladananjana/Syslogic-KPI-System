@@ -13,6 +13,7 @@ const recordSchema = new mongoose.Schema({
   },
 
   addedDate: Date,
+  fileName: String,
 
   companyId: {
     type: mongoose.Schema.Types.ObjectId,

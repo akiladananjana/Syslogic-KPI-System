@@ -23,6 +23,7 @@
       <%- include('includes/siteLogo') %> <%- include('includes/navigationBar')
       %>
     </header>
+
     <div id="page-container">
       <div class="wrapper">
         <main>
@@ -74,6 +75,50 @@
                     disabled
                   />
                 </div>
+                <textarea
+                  name=""
+                  id=""
+                  placeholder="Enter Remarks"
+                  disabled
+                ></textarea>
+
+                <form
+                  class="kpiFileUploadForm"
+                  method="post"
+                  action="http://127.0.0.1:4000/api/v1/record/upload"
+                  enctype="multipart/form-data"
+                >
+                  <input
+                    id="upload_File_Input"
+                    name="kpi-record-file"
+                    type="file"
+                  />
+                </form>
+                <p>Uploaded Documents:</p>
+                <div class="uploadedDocuments">
+                  <ul>
+                    <li>
+                      <% const fileName = kpiRecords[i].fileName ?
+                      kpiRecords[i].fileName : "No File to Display" %>
+                      <a href="#"><%= fileName %></a>
+                      <svg
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        ></path>
+                      </svg>
+                    </li>
+                  </ul>
+                </div>
+
                 <button>Edit</button>
                 <button>Remove</button>
                 <input
@@ -88,6 +133,9 @@
             </ul>
           </div>
         </section>
+      </div>
+      <div class="preloaderContainer">
+        <div class="preloader"></div>
       </div>
       <!-- <footer>
         <p>Syslogic KPI System</p>
